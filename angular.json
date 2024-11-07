@@ -11,7 +11,7 @@
           "standalone": false
         },
         "@schematics/angular:directive": {
-          "standalone": false
+          "standalone": false 
         },
         "@schematics/angular:pipe": {
           "standalone": false
