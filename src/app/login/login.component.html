@@ -1,0 +1,16 @@
+<div class="login-container">
+  <div class="login-box">
+    <h1> BASIC CRUD SCREEN </h1>
+    <form (ngSubmit)="onSubmit()">
+      <div class="input-container">
+        <label for="username">Username</label>
+        <input type="text" id="username" [(ngModel)]="username" name="username" required placeholder="Enter Username" />
+      </div>
+      <div class="input-container">
+        <label for="password">Password</label>
+        <input type="password" id="password" [(ngModel)]="password" name="password" required placeholder="Enter Password" />
+      </div>
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
+</div>

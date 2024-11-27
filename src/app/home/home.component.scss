@@ -1,0 +1,126 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #38a2f3;
+    overflow: hidden; /* Prevent scrolling on the entire page */
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Ensure full width */
+    height: 100vh; /* Full viewport height */
+  }
+  
+  .header {
+    display: flex;
+    background-color: #8494a5;
+    justify-content: flex-end;
+    color: white;
+    text-align: center;
+    padding: 18px 0;
+    height: 50px;  /* Fixed height for the header */
+    flex-shrink: 0;
+  }
+  
+  .main-layout {
+    display: flex;
+    flex: 1;
+    overflow: hidden; /* Prevent scrolling within the main layout */
+  }
+  
+  .sidebar {
+    width: 150px;
+    background-color: #95a0ac;
+    padding: 10px;
+    overflow-y: auto; /* Scrollable only if content overflows */
+  }
+  
+  .content {
+    flex: 1;
+    padding: 10px;
+    background-color: #f5f7f8;
+    overflow-y: auto; /* Scrollable only if content overflows */
+  }
+  
+  .footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    height: 40px; /* Fixed height for the footer */
+    flex-shrink: 0;
+  }
+
+  form {
+    margin-top: 20px;
+  }
+  
+  input[type="text"] {
+    padding: 8px;
+    margin: 10px 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;  /* Adjust this value to move the username slightly left */
+  }  
+
+  .username {
+    font-size: 18px;  /* Adjust the font size as needed */
+    font-weight: bold;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .alert {
+    margin: 1rem 0;
+    padding: 0.5rem;
+    border: 1px solid #c3e6cb;
+    background-color: #d4edda;
+    color: #155724;
+  }
+
+  .dropdown {
+    display: inline-block;
+    position: relative;
+  }
+  
+  .dropdown-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: #007bff;
+  }
+  
+  .dropdown-menu {
+    display: block;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 120px;
+  }
+  
+  .dropdown-menu a {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .dropdown-menu a:hover {
+    background-color: #f1f1f1;
+  }
+  
+  
+  

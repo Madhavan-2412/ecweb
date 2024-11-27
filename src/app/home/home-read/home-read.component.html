@@ -1,0 +1,21 @@
+<!-- src/app/home/home-read/home-read.component.html -->
+
+<div class="reports-container">
+    <h2>Item Reports</h2>
+    <table class="table-bordered">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Item Name</th>
+                <th>Item Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ item.itemName }}</td>
+                <td>{{ item.itemNumber }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
