@@ -1,0 +1,17 @@
+/* src/app/home/home-read/home-read.component.scss */
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Ensures borders do not overlap */
+}
+
+th, td {
+    border: 1px solid #ddd; /* Light gray borders */
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4; /* Light background for the header */
+    font-weight: bold;
+}

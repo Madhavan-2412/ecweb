@@ -1,0 +1,37 @@
+<div class="container">
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <span class="username">
+        Hello {{ username }} 
+        <div class="dropdown">
+          <button class="dropdown-toggle" (click)="toggleDropdown()">
+            ▼
+          </button>
+          <div *ngIf="dropdownVisible" class="dropdown-menu">
+            <a href="#" (click)="logout()">Logout</a>
+          </div>
+        </div>
+      </span>
+    </div>
+  </header>
+
+  <!-- Main Layout -->
+  <div class="main-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <ul>
+        <li><a routerLink="create" routerLinkActive="active">Create Item</a></li>
+        <li><a routerLink="reports" routerLinkActive="active">Read Item</a></li>
+      </ul>
+    </aside>
+
+    <!-- Content -->
+    <main class="content">
+      <router-outlet></router-outlet> <!-- Child views will display here -->
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">&copy; 2024 Your Company Name</footer>
+</div>

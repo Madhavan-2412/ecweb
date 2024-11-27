@@ -11,11 +11,11 @@
           "standalone": false
         },
         "@schematics/angular:directive": {
-          "standalone": false
+          "standalone": false 
         },
         "@schematics/angular:pipe": {
           "standalone": false
-        }
+        } 
       },
       "root": "",
       "sourceRoot": "src",
@@ -35,7 +35,7 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "src/assets"
               }
             ],
             "styles": [
@@ -99,7 +99,7 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "src/assets"
               }
             ],
             "styles": [
@@ -110,5 +110,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "afed51fe-e485-4e95-bf9b-b62b10929826"
   }
 }
