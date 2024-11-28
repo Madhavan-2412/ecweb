@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ItemService } from '../../../services/item.service';
 
 @Component({
@@ -7,12 +7,9 @@ import { ItemService } from '../../../services/item.service';
   styleUrl: './home-read.component.scss'
 })
 export class HomeReadComponent implements OnInit {
-  items: any[] = []; // To hold the data to display
+  @Input() items: any[] = [];
 
   constructor(private itemService: ItemService) {}
 
-  ngOnInit(): void {
-    // Retrieve the items from the service when the component is initialized
-    this.items = this.itemService.getItems();
-  }
+  ngOnInit(): void {}
 }

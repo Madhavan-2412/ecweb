@@ -9,6 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { HomeCreateComponent } from './home/home-create/home-create.component';
 import { HomeReadComponent } from './home/home-read/home-read.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,15 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
   ],
   imports: [
     BrowserModule,
-    FormsModule, 
+    FormsModule,
+    BrowserAnimationsModule, // Required for Toastr animations
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right',  // Toast position: top-right
+      toastClass: 'toast toast-error',  // Use the 'toast-error' class for styling
+      timeOut: 3000,  // Duration for toast to appear (in milliseconds)
+      closeButton: true,  // Add a close button to the toast
+      progressBar: true,  // Add a progress bar for the toast duration
+    }), 
     ReactiveFormsModule,
     AppRoutingModule,
     BsDatepickerModule.forRoot(),
