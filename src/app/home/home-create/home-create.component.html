@@ -7,7 +7,7 @@
       aria-controls="collapseOne" 
       class="pointer card-header bg-white" 
       id="headingOne">
-      <h2><span style="color: darkmagenta"><b>Create Item</b></span></h2>
+      <h2><span style="color: darkmagenta"><b> Add and View Item </b></span></h2>
     </div>
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div class="card-body">
@@ -15,7 +15,7 @@
           <div class="row">
             <!-- Item Name Column -->
             <div class="col-md-6 form-group required-field mb-4">
-              <label for="itemName">Item Name:</label>
+              <label for="itemName">Item Name:    </label>
               <input 
                 type="text" 
                 class="form-control" 
@@ -30,7 +30,7 @@
 
             <!-- Item Number Column -->
             <div class="col-md-6 form-group required-field mb-4">
-              <label for="itemNumber">Item Number:</label>
+              <label for="itemNumber">Item Number:    </label>
               <input 
                 type="text" 
                 class="form-control" 
@@ -43,9 +43,12 @@
               />
             </div>
           </div>
-
+          <div class="col-md-12 form-group">
+            <div *ngIf="restrictionNotes" style="color: red; margin-left: 2px; margin-top: 5px; margin-bottom: 15px;">
+              <h4><b>{{ restrictionNotes }}</b></h4>
+            </div>
+          </div>
           <!-- Separate row for Submit, Clear, and Cancel Buttons -->
-          <div class="row mt-3">
             <div class="col-md-12 form-group text-center">
               <input 
                 type="submit" 
@@ -68,14 +71,12 @@
                 (click)="onCancel()" 
               />
             </div>
-          </div>
-
           <!-- Loader (visible when loading is true) -->
           <div *ngIf="loading" class="loader-overlay">
             <div class="loader"></div>
           </div>
-
         </form>
+        <app-home-read *ngIf="showItems" [items]="items"></app-home-read>
       </div>
     </div>
   </div>

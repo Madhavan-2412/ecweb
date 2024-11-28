@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ItemService } from '../../../services/item.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home-create',
@@ -9,24 +10,29 @@ import { ItemService } from '../../../services/item.service';
   styleUrl: './home-create.component.scss'
 })
 export class HomeCreateComponent implements OnInit {
+  items: any[] = [];
   createItemForm: FormGroup;
   loading: boolean = false; 
+  restrictionNotes: string = '';
+  showItems: boolean = false;
 
-  constructor(private fb: FormBuilder, private router: Router, private itemService: ItemService) {
+  constructor(private fb: FormBuilder, private router: Router, private itemService: ItemService,  private toasterService: ToastrService) {
     this.createItemForm = this.fb.group({
       itemName: ['', [Validators.required, Validators.pattern('^[A-Za-z\\s]+$')]],
       itemNumber: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.items = this.itemService.getItems();
+  }
 
   restrictToAlphabets(event: KeyboardEvent): void {
     const charCode = event.which || event.keyCode;
     const char = String.fromCharCode(charCode);
     if (!/[a-zA-Z]/.test(char)) {
       event.preventDefault();  // Prevent any non-alphabetic character
-      alert('Only alphabets are allowed in Item Name!');
+      this.restrictionNotes = 'Note: Only alphabets are allowed';
     }
   }
 
@@ -36,13 +42,14 @@ export class HomeCreateComponent implements OnInit {
     const char = String.fromCharCode(charCode);
     if (!/[0-9]/.test(char)) {
       event.preventDefault();  // Prevent any non-numeric character
-      alert('Only numbers are allowed in Item Number!');
+      this.restrictionNotes = 'Note: Only numbers are allowed';
     }
   }
 
   onSubmit(formData: any): void {
     if (this.createItemForm.valid) {
       this.loading = true; 
+      this.restrictionNotes = '';
       console.log('Form Submitted', formData);
 
       const newItem = {
@@ -50,14 +57,22 @@ export class HomeCreateComponent implements OnInit {
         itemNumber: formData.itemNumber
       };
       
+      const existingItem = this.items.find(item => item.itemName === newItem.itemName && item.itemNumber === newItem.itemNumber);
+      if (existingItem) {
+        this.loading = false;
+        this.restrictionNotes = 'Duplicate Error: Item name and numbers cannot be duplicated';
+        return;
+      }
+
       console.log("New Item....",newItem);
       this.itemService.addItem(newItem);
       
       setTimeout(() => {
         this.loading = false; // Hide the loader
+        this.items = this.itemService.getItems(); // Refresh the items
+        this.showItems = true; // Set flag to true to display items
         alert('Item created successfully!');
-        this.router.navigate(['home']); // Navigate to the home page
-      }, 2000); // Simulate 2-second delay
+      }, 1000); // Simulate 2-second delay
     }
   }
 
